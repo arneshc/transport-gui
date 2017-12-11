@@ -9,11 +9,6 @@
 
 <AnchorPane prefHeight="300.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.RateOverviewController">
    <children>
-      <TextField alignment="CENTER" editable="false" layoutX="184.0" layoutY="26.0" prefHeight="39.0" prefWidth="232.0" text="Change Rates:">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </TextField>
       <Label layoutX="63.0" layoutY="111.0" prefHeight="39.0" prefWidth="169.0" text="New Rate (USD):">
          <font>
             <Font size="16.0" />
@@ -27,6 +22,11 @@
       <Label layoutX="340.0" layoutY="111.0" prefHeight="39.0" prefWidth="169.0" text="Transport Method:">
          <font>
             <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="237.0" layoutY="14.0" prefHeight="47.0" prefWidth="128.0" text="Change Rates:">
+         <font>
+            <Font size="18.0" />
          </font>
       </Label>
    </children>

@@ -84,7 +84,7 @@ public class BookingOverviewController {
     				destResult.setText(destinationChoice);
     				for (int i = 0; i < MainApp.getPlaneData().size(); i++) {
     					if (MainApp.getPlaneData().get(i).getDestination().get().equals(destinationChoice)) {
-    						distResult.setText(MainApp.getPlaneData().get(i).getDestination().get());
+    						distResult.setText("" + MainApp.getPlaneData().get(i).getDistance().getValue());
     						costResult.setText("" + MainApp.getPlaneData().get(i).getTicketCost().getValue());
     					}
     				}
@@ -92,7 +92,7 @@ public class BookingOverviewController {
     				destResult.setText(destinationChoice);
     				for (int i = 0; i < MainApp.getTrainData().size(); i++) {
     					if (MainApp.getTrainData().get(i).getDestination().get().equals(destinationChoice)) {
-    						distResult.setText(MainApp.getTrainData().get(i).getDestination().get());
+    						distResult.setText("" + MainApp.getTrainData().get(i).getDistance().getValue());
     						costResult.setText("" + MainApp.getTrainData().get(i).getTicketCost().getValue());
     					}
     				}

@@ -25,3 +25,6 @@ Baltimore
 D.C.
 Portland
 Beijing
+Honolulu
+Shanghai
+Zagreb

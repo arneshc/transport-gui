@@ -19,7 +19,7 @@
                         <Image url="@1557f0de9648a7e.jpg" />
                      </image>
                   </ImageView>
-                  <TextField alignment="CENTER" blendMode="DARKEN" layoutX="47.0" layoutY="125.0" prefHeight="295.0" prefWidth="598.0" text="WELCOME TO NOT SUBURBAN EXPRESS" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <TextField alignment="CENTER" blendMode="DARKEN" editable="false" layoutX="-1.0" layoutY="106.0" prefHeight="42.0" prefWidth="600.0" text="WELCOME TO NOT SUBURBAN EXPRESS" AnchorPane.bottomAnchor="147.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="106.0">
                      <font>
                         <Font name="System Bold Italic" size="24.0" />
                      </font>
