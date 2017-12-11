@@ -1,0 +1,114 @@
+package view;
+
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.io.BufferedWriter;
+import java.io.OutputStreamWriter;
+import java.io.FileOutputStream;
+
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.stage.Stage;
+import ticketer.MainApp;
+
+public class AddStationOverviewController {
+	/*
+	 * Overview elements.
+	 */
+	@FXML
+    private Button addButton;
+    
+    @FXML
+    private Button backButton;
+    
+    @FXML
+    private Label feedback;
+    
+    @FXML
+    private TextField station;
+    
+    @FXML
+    private TextField distance;
+    
+    // Reference to the main application.
+    private MainApp mainApp;
+
+    /**
+     * The constructor.
+     * The constructor is called before the initialize() method.
+     */
+    public AddStationOverviewController() {
+    }
+
+    /**
+     * Initializes the controller class. This method is automatically called
+     * after the fxml file has been loaded.
+     */
+    @FXML
+    private void initialize() {
+    }
+    
+    /**
+     * Method to handle button events to change scenes.
+     * @param action the action performed
+     */
+    @FXML
+    private void handleButtonAction(ActionEvent action) throws IOException {
+    		FXMLLoader loader = new FXMLLoader();
+    		Stage currentStage = (Stage) addButton.getScene().getWindow();
+    		Parent root = loader.load(getClass().getResource("AddStationOverview.fxml"));
+    		if (action.getSource() == backButton) {
+    			//Reference to button's stage
+    			currentStage = (Stage) backButton.getScene().getWindow();
+    			
+    			//Load document to switch to
+    			root = loader.load(getClass().getResource("TicketerOverview.fxml"));
+    			
+    			//Create new scene with root and stage
+        		Scene scene = new Scene(root);
+        		currentStage.setScene(scene);
+        		currentStage.show();
+    		} else if (action.getSource() == addButton) {
+    			//Check for invalid input or empty fields
+    			if (station.getText() != null && distance.getText() != null) {
+    				try {
+    					//Write destination and distance to file
+    					BufferedWriter dbconcat = new BufferedWriter(
+    							new OutputStreamWriter(new FileOutputStream(
+    									"PlaneDatabase.txt", true), StandardCharsets.UTF_8));
+    					dbconcat.write(station.getText() + "\n");
+    					dbconcat.close();
+    					
+    					BufferedWriter distconcat = new BufferedWriter(
+    							new OutputStreamWriter(new FileOutputStream(
+								"PlaneDistances.txt", true), StandardCharsets.UTF_8));
+    					//Parse int to check for valid input
+    					distconcat.write(Integer.parseInt(distance.getText()) + "\n");
+    					distconcat.close();
+    					MainApp.refresh();
+    					feedback.setText("Station Added!");
+    				} catch (IOException e) {
+    					feedback.setText("Database not found.");
+    				} catch (NumberFormatException n) {
+    					feedback.setText("Invalid distance.");
+    				}
+    			} else {
+    				feedback.setText("Field is empty.");
+    			}
+    		}
+    }
+
+    /**
+     * Is called by the main application to give a reference back to itself.
+     * 
+     * @param mainApp
+     */
+    public void setMainApp(MainApp mainApp) {
+        this.mainApp = mainApp;
+
+    }
+}
